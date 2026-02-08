@@ -6,8 +6,8 @@ local avatarImageUrl = "https://www.roblox.com/headshot-thumbnail/image?userId="
 
 local Window = Rayfield:CreateWindow({
    Name = "Universe Script by @bphong0946 🌌",
-   LoadingTitle = "Đang khởi tạo Universe Hub...",
-   LoadingSubtitle = "by @bphong0946",
+   LoadingTitle = "⚡ ĐANG TẢI HỆ THỐNG...",
+   LoadingSubtitle = "Vui lòng chờ trong giây lát",
    ConfigurationSaving = {
       Enabled = true,
       FolderName = "UniverseConfig_bphong"
@@ -15,36 +15,39 @@ local Window = Rayfield:CreateWindow({
    Image = avatarImageUrl
 })
 
+-- HIỆN THÔNG BÁO SAU KHI LOAD XONG
+Rayfield:Notify({
+   Title = "KÍCH HOẠT THÀNH CÔNG",
+   Content = "Script by Bphong0946",
+   Duration = 6.5,
+   Image = avatarImageUrl,
+})
+
 -- ==========================================
 -- TAB: HEAVYWEIGHT FISHING 🎣
 -- ==========================================
 local FishTab = Window:CreateTab("Heavyweight Fishing", 4483362458)
 
-FishTab:CreateSection("🔥 Best Fishing Hubs")
+FishTab:CreateSection("🔥 Featured Scripts")
 
 FishTab:CreateButton({
-   Name = "🌟 Kích hoạt Khfresh Hub (New)",
+   Name = "📜 Super Couscous Script",
    Callback = function()
-      Rayfield:Notify({Title = "Khfresh Hub", Content = "Đang tải Khfresh Hub...", Duration = 3})
+      loadstring(game:HttpGet("https://raw.githubusercontent.com/talaben0307-jpg/super-couscous/refs/heads/main/script"))()
+   end,
+})
+
+FishTab:CreateButton({
+   Name = "🌟 Khfresh Hub",
+   Callback = function()
       loadstring(game:HttpGet("https://raw.githubusercontent.com/bvect1037-alt/KhfreshHub/refs/heads/main/HeavyWeightFishing"))()
    end,
 })
 
 FishTab:CreateButton({
-   Name = "🚀 Kích hoạt Z Hub (Zenith Hub)",
+   Name = "🚀 Zenith Hub (Z Hub)",
    Callback = function()
-      Rayfield:Notify({Title = "Z Hub", Content = "Đang tải Zenith Hub...", Duration = 3})
       loadstring(game:HttpGet("https://raw.githubusercontent.com/toilatu890/Zenith-Hub/refs/heads/main/obfuscated_script-1769824988936.lua.txt"))()
-   end,
-})
-
-FishTab:CreateSection("Basic Tools")
-
-FishTab:CreateButton({
-   Name = "Auto Sell (Bán tất cả cá)",
-   Callback = function()
-      game:GetService("ReplicatedStorage").Events.Fishing.SellAll:FireServer()
-      Rayfield:Notify({Title = "Fishing", Content = "Đã gửi lệnh bán cá!", Duration = 2})
    end,
 })
 
@@ -56,14 +59,14 @@ local TSBTab = Window:CreateTab("TSB Script", 4483362458)
 TSBTab:CreateSection("⭐ Top Tier Scripts")
 
 TSBTab:CreateButton({
-   Name = "🛡️ Tthanh Hub TSB (Tổng Hợp Tech)",
+   Name = "🛡️ Tthanh Hub TSB",
    Callback = function()
       loadstring(game:HttpGet("https://raw.githubusercontent.com/kaimm2/TSB/refs/heads/main/Tthanh%20Tong%20Hop%20Tech.txt"))()
    end,
 })
 
 TSBTab:CreateButton({
-   Name = "⚔️ Combat GUI TSB (Pro)",
+   Name = "⚔️ Combat GUI TSB",
    Callback = function()
       loadstring(game:HttpGet("https://raw.githubusercontent.com/Cyborg883/CombatGUI/refs/heads/main/TSBCombatGUI"))()
    end,
@@ -77,14 +80,14 @@ local PlayerTab = Window:CreateTab("Player Tools", 4483362458)
 PlayerTab:CreateSection("Admin & Special")
 
 PlayerTab:CreateButton({
-   Name = "Infinite Yield (Admin Commands)",
+   Name = "Infinite Yield (Admin)",
    Callback = function()
       loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
    end,
 })
 
-PlayerTab:CreateButton({ Name = "Fly GUI V3 (Bay)", Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/XNEOFF/FlyGuiV3/main/FlyGuiV3.txt"))() end })
-PlayerTab:CreateButton({ Name = "Invisible (Tàng hình)", Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/Finilando/script/refs/heads/main/INVISIBLE"))() end })
+PlayerTab:CreateButton({ Name = "Fly GUI V3", Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/XNEOFF/FlyGuiV3/main/FlyGuiV3.txt"))() end })
+PlayerTab:CreateButton({ Name = "Invisible", Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/Finilando/script/refs/heads/main/INVISIBLE"))() end })
 
 -- ==========================================
 -- TAB: VISUALS ✨
@@ -92,15 +95,8 @@ PlayerTab:CreateButton({ Name = "Invisible (Tàng hình)", Callback = function()
 local VisualTab = Window:CreateTab("Visuals", 4483362458)
 
 VisualTab:CreateButton({
-   Name = "RTX Shader (Làm đẹp game)",
+   Name = "RTX Shader",
    Callback = function()
       loadstring(game:HttpGet("https://raw.githubusercontent.com/CludeHub/RTX-Night-Day/refs/heads/main/RTX-Like-Never-Before.lua"))()
    end,
-})
-
-Rayfield:Notify({
-   Title = "Cập nhật thành công!",
-   Content = "Đã thêm Khfresh Hub vào bộ sưu tập!",
-   Duration = 5,
-   Image = avatarImageUrl
 })
