@@ -2,7 +2,7 @@ local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/
 
 local Window = Fluent:CreateWindow({
     Title = "Universe Script by @bphong0946 🌌",
-    SubTitle = "⚡ Bản Bảo Mật Tuyệt Đối",
+    SubTitle = "⚡ Full Scripts - High Security",
     TabWidth = 160,
     Size = UDim2.fromOffset(580, 460),
     Acrylic = true, 
@@ -11,7 +11,7 @@ local Window = Fluent:CreateWindow({
 })
 
 -- ==========================================
--- KHỞI TẠO CÁC TAB
+-- KHỞI TẠO TẤT CẢ 5 TAB
 -- ==========================================
 local Tabs = {
     Op = Window:AddTab({ Title = "Op script", Icon = "gem" }),
@@ -22,31 +22,26 @@ local Tabs = {
 }
 
 -- ==========================================
--- TAB: OP SCRIPT (BẢO MẬT - ĐÃ ẨN KEY) 🔐
+-- 1. TAB: OP SCRIPT (ẨN KEY - CHỈ HIỆN EMOTE)
 -- ==========================================
-local OpKey = "OP_0946" -- KEY MỚI CỦA BẠN
+local OpKey = "OP_0946" 
 local KeyUnlocked = false
-local OpSection = Tabs.Op:AddSection("🔐 Xác thực quyền truy cập")
+local OpSection = Tabs.Op:AddSection("🔐 Xác thực Admin")
 
 Tabs.Op:AddInput("Input", {
-    Title = "Nhập mật mã của bạn",
+    Title = "Nhập mật mã",
     Default = "",
-    Placeholder = "Vui lòng nhập mã...", -- ĐÃ XÓA CHỮ TRONG SUỐT LỘ KEY
-    Callback = function(Value) 
-        _G.InputOpKey = Value 
-    end
+    Placeholder = "Nhập mã tại đây...", -- Đã xóa chữ lộ Key
+    Callback = function(Value) _G.InputOpKey = Value end
 })
 
 Tabs.Op:AddButton({
-    Title = "🔓 XÁC NHẬN",
-    Description = "Bấm để mở khóa danh sách Emote",
+    Title = "🔓 XÁC NHẬN MỞ KHÓA",
     Callback = function()
         if _G.InputOpKey == OpKey then
             if not KeyUnlocked then
                 KeyUnlocked = true
-                Fluent:Notify({Title = "CHÍNH XÁC", Content = "Đã mở khóa Section Emote!", Duration = 5})
-                
-                -- CHỈ HIỆN EMOTE, KHÔNG HIỆN GÌ KHÁC
+                Fluent:Notify({Title = "THÀNH CÔNG", Content = "Đã mở khóa Emote R15!", Duration = 5})
                 Tabs.Op:AddSection("🎭 DANH SÁCH EMOTE")
                 Tabs.Op:AddButton({
                     Title = "🌟 Full Emote OP Script (R15)",
@@ -56,30 +51,75 @@ Tabs.Op:AddButton({
                 })
             end
         else
-            Fluent:Notify({Title = "SAI MÃ", Content = "Bạn không có quyền truy cập!", Duration = 5})
+            Fluent:Notify({Title = "SAI KEY", Content = "Vui lòng kiểm tra lại mật mã!", Duration = 5})
         end
     end
 })
 
 -- ==========================================
--- CÁC TAB CÒN LẠI (GIỮ NGUYÊN)
+-- 2. TAB: HEAVYWEIGHT FISHING 🎣 (ĐỦ 3 SCRIPT)
 -- ==========================================
-Tabs.Fish:AddSection("🔥 Scripts Câu Cá")
-Tabs.Fish:AddButton({ Title = "📜 Super Couscous Script", Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/talaben0307-jpg/super-couscous/refs/heads/main/script"))() end })
-Tabs.Fish:AddButton({ Title = "🌟 Khfresh Hub", Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/bvect1037-alt/KhfreshHub/refs/heads/main/HeavyWeightFishing"))() end })
+Tabs.Fish:AddSection("🔥 Featured Scripts")
+Tabs.Fish:AddButton({
+    Title = "📜 Super Couscous Script",
+    Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/talaben0307-jpg/super-couscous/refs/heads/main/script"))() end
+})
+Tabs.Fish:AddButton({
+    Title = "🌟 Khfresh Hub",
+    Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/bvect1037-alt/KhfreshHub/refs/heads/main/HeavyWeightFishing"))() end
+})
+Tabs.Fish:AddButton({
+    Title = "🚀 Zenith Hub (Z Hub)",
+    Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/toilatu890/Zenith-Hub/refs/heads/main/obfuscated_script-1769824988936.lua.txt"))() end
+})
 
+-- ==========================================
+-- 3. TAB: TSB SCRIPT ⚔️ (ĐỦ HUB & ANIMATION)
+-- ==========================================
 Tabs.TSB:AddSection("🎭 Animations")
-Tabs.TSB:AddButton({ Title = "🎭 Animation Strong Guest", Callback = function() loadstring(game:HttpGet('https://raw.githubusercontent.com/Mautiku/ehh/main/strong%20guest.lua.txt'))() end })
+Tabs.TSB:AddButton({
+    Title = "🎭 Animation Character (Strong Guest)",
+    Callback = function() loadstring(game:HttpGet('https://raw.githubusercontent.com/Mautiku/ehh/main/strong%20guest.lua.txt'))() end
+})
 
-Tabs.Player:AddSection("Utilities")
-Tabs.Player:AddButton({ Title = "Infinite Yield", Callback = function() loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))() end })
-Tabs.Player:AddButton({ Title = "Fly GUI V3", Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/XNEOFF/FlyGuiV3/main/FlyGuiV3.txt"))() end })
-
-Tabs.Visual:AddSection("Graphics")
-Tabs.Visual:AddButton({ Title = "RTX Shader", Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/CludeHub/RTX-Night-Day/refs/heads/main/RTX-Like-Never-Before.lua"))() end })
+Tabs.TSB:AddSection("⭐ Main Hubs")
+Tabs.TSB:AddButton({
+    Title = "🛡️ Tthanh Hub TSB",
+    Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/kaimm2/TSB/refs/heads/main/Tthanh%20Tong%20Hop%20Tech.txt"))() end
+})
+Tabs.TSB:AddButton({
+    Title = "⚔️ Combat GUI TSB",
+    Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/Cyborg883/CombatGUI/refs/heads/main/TSBCombatGUI"))() end
+})
 
 -- ==========================================
--- NÚT LƠ LỬNG
+-- 4. TAB: PLAYER TOOLS 🛠️ (ĐỦ TOOL)
+-- ==========================================
+Tabs.Player:AddSection("Admin Tools")
+Tabs.Player:AddButton({
+    Title = "Infinite Yield",
+    Callback = function() loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))() end
+})
+Tabs.Player:AddButton({
+    Title = "Fly GUI V3",
+    Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/XNEOFF/FlyGuiV3/main/FlyGuiV3.txt"))() end
+})
+Tabs.Player:AddButton({
+    Title = "Invisible (Tàng hình)",
+    Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/Finilando/script/refs/heads/main/INVISIBLE"))() end
+})
+
+-- ==========================================
+-- 5. TAB: VISUALS ✨ (ĐỦ RTX)
+-- ==========================================
+Tabs.Visual:AddSection("Graphics")
+Tabs.Visual:AddButton({
+    Title = "RTX Shader",
+    Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/CludeHub/RTX-Night-Day/refs/heads/main/RTX-Like-Never-Before.lua"))() end
+})
+
+-- ==========================================
+-- NÚT LƠ LỬNG (FLOATING BUTTON)
 -- ==========================================
 local ToggleButton = Instance.new("ScreenGui")
 local MainButton = Instance.new("TextButton")
