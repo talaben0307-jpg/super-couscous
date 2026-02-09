@@ -2,7 +2,8 @@ local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 -- Cấu hình cá nhân của @bphong0946
 local MY_ROBLOX_USER_ID = 2650786301 
-local avatarImageUrl = "https://www.roblox.com/headshot-thumbnail/image?userId="......"&width=420&height=420&format=png"
+-- Đã sửa lỗi nối chuỗi biến ID vào link ảnh
+local avatarImageUrl = "https://www.roblox.com/headshot-thumbnail/image?userId=" .. MY_ROBLOX_USER_ID .. "&width=420&height=420&format=png"
 
 local Window = Rayfield:CreateWindow({
    Name = "Universe Script by @bphong0946 🌌",
@@ -12,7 +13,12 @@ local Window = Rayfield:CreateWindow({
       Enabled = true,
       FolderName = "UniverseConfig_bphong"
    },
-   Image = avatarImageUrl
+   Discord = {
+      Enabled = false,
+      Invite = "noinvitelink",
+      RememberJoins = true
+   },
+   KeySystem = false, -- Bạn có thể bật true nếu muốn dùng Key
 })
 
 -- HIỆN THÔNG BÁO SAU KHI LOAD XONG
@@ -20,7 +26,7 @@ Rayfield:Notify({
    Title = "KÍCH HOẠT THÀNH CÔNG",
    Content = "Script by Bphong0946",
    Duration = 6.5,
-   Image = avatarImageUrl,
+   Image = 4483362458, -- Dùng ID icon mặc định để đảm bảo luôn hiện
 })
 
 -- ==========================================
@@ -86,8 +92,19 @@ PlayerTab:CreateButton({
    end,
 })
 
-PlayerTab:CreateButton({ Name = "Fly GUI V3", Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/XNEOFF/FlyGuiV3/main/FlyGuiV3.txt"))() end })
-PlayerTab:CreateButton({ Name = "Invisible", Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/Finilando/script/refs/heads/main/INVISIBLE"))() end })
+PlayerTab:CreateButton({ 
+    Name = "Fly GUI V3", 
+    Callback = function() 
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/XNEOFF/FlyGuiV3/main/FlyGuiV3.txt"))() 
+    end 
+})
+
+PlayerTab:CreateButton({ 
+    Name = "Invisible", 
+    Callback = function() 
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Finilando/script/refs/heads/main/INVISIBLE"))() 
+    end 
+})
 
 -- ==========================================
 -- TAB: VISUALS ✨
