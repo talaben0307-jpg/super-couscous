@@ -1,19 +1,39 @@
--- Script dành cho Xeno Client để "ghi đè" âm thanh Server
-local targetID = "136026701060321" -- Thay ID nhạc của bạn vào đây
+-- SCRIPT PHÁT NHẠC DÀNH CHO NGƯỜI CÓ GAMEPASS (BROOKHAVEN)
+local musicID = "120674241869228" -- ID nhạc của bạn
 
-local oldNamecall
-oldNamecall = hookmetamethod(game, "__namecall", function(self, ...)
-    local method = getnamecallmethod()
-    local args = {...}
+print("Đã nhận diện Gamepass. Đang khởi động hệ thống âm thanh...")
 
-    -- Nếu game đang cố gắng gửi lệnh phát nhạc (ví dụ qua Radio hoặc Loa)
-    if method == "FireServer" and (self.Name:lower():find("music") or self.Name:lower():find("sound")) then
-        -- Thay đổi ID nhạc gốc bằng ID của bạn trước khi nó gửi lên Server
-        args[1] = targetID 
-        return oldNamecall(self, unpack(args))
-    end
+-- 1. Tự động lấy Radio từ túi đồ nếu chưa cầm trên tay
+local player = game.Players.LocalPlayer
+local backpack = player.Backpack
+local character = player.Character
+
+local radio = character:FindFirstChild("Radio") or backpack:FindFirstChild("Radio")
+
+if radio then
+    -- Đảm bảo bạn đang cầm Radio trên tay
+    radio.Parent = character 
     
-    return oldNamecall(self, ...)
-end)
-
-print("Xeno Client đã kích hoạt ghi đè âm thanh!")
+    -- 2. Tìm RemoteEvent chính thức của Radio để phát nhạc
+    -- Brookhaven thường dùng các sự kiện để đồng bộ nhạc toàn Server
+    local remote = radio:FindFirstChildOfClass("RemoteEvent") or game:GetService("ReplicatedStorage"):FindFirstChild("MusicEvent")
+    
+    if remote then
+        -- Gửi ID nhạc lên Server (Vì có Gamepass nên Server sẽ duyệt ngay)
+        remote:FireServer(musicID)
+        print("Đang phát nhạc toàn Server với ID: " .. musicID)
+    else
+        warn("Không tìm thấy cổng truyền tín hiệu âm nhạc!")
+    end
+else
+    -- 3. Nếu không cầm radio, thử phát qua hệ thống Loa Xe hơi (Server-side)
+    local remoteEvent = game:GetService("ReplicatedStorage"):FindFirstChild("Remotes") 
+                        and game:GetService("ReplicatedStorage").Remotes:FindFirstChild("MusicEvent")
+    
+    if remoteEvent then
+        remoteEvent:FireServer(musicID)
+        print("Đang phát nhạc qua hệ thống xe hơi/nhà cửa!")
+    else
+        warn("Hãy cầm Radio lên hoặc ngồi vào xe để phát nhạc!")
+    end
+end
