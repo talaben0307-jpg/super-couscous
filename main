@@ -1,5 +1,5 @@
 -- SCRIPT PHÁT NHẠC DÀNH CHO NGƯỜI CÓ GAMEPASS (BROOKHAVEN)
-local musicID = "120674241869228" -- ID nhạc của bạn
+local musicID = "9040012015" -- ID nhạc của bạn
 
 print("Đã nhận diện Gamepass. Đang khởi động hệ thống âm thanh...")
 
