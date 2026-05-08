@@ -1,0 +1,19 @@
+-- Script dành cho Xeno Client để "ghi đè" âm thanh Server
+local targetID = "136026701060321" -- Thay ID nhạc của bạn vào đây
+
+local oldNamecall
+oldNamecall = hookmetamethod(game, "__namecall", function(self, ...)
+    local method = getnamecallmethod()
+    local args = {...}
+
+    -- Nếu game đang cố gắng gửi lệnh phát nhạc (ví dụ qua Radio hoặc Loa)
+    if method == "FireServer" and (self.Name:lower():find("music") or self.Name:lower():find("sound")) then
+        -- Thay đổi ID nhạc gốc bằng ID của bạn trước khi nó gửi lên Server
+        args[1] = targetID 
+        return oldNamecall(self, unpack(args))
+    end
+    
+    return oldNamecall(self, ...)
+end)
+
+print("Xeno Client đã kích hoạt ghi đè âm thanh!")
